@@ -5,20 +5,22 @@ nnoremap <C-space> <Nop>
 
 " variables
 let g:NERDTreeWinPos = 'left'
+set nu
 " colors
-colo dracula
 
 " vim-plug and setups
 call plug#begin('~/.vim_runtime/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " load plugins <Plug>PeepOpen
 autocmd! User neovim/nvim-lspconfig echom 'lspconfig loaded'
 autocmd! User nvim-treesitter/nvim-treesitter echom 'treesitter loaded'
 autocmd! User neoclide/coc.nvim echom 'nvim loaded'
+autocmd! User fatih/vim-go echom 'vim-go loaded'
 
 " plugin related setup
 " coc config
@@ -44,3 +46,22 @@ inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 " shortchuts
 map <Leader>f :NERDTreeToggle <cr>
+nmap <Leader>a :call CocAction('format') <cr>
+
+" vim-go related
+filetype plugin indent on
+set autowrite
+" Go syntax highlighting
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+" Auto formatting and importing
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
+" Status line types/signatures
+let g:go_auto_type_info = 1
+autocmd filetype go setlocal omnifunc=go#complete#Complete
+autocmd filetype go nnoremap gd :GoDef <cr>
+
