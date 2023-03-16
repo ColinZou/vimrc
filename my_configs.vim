@@ -2,7 +2,8 @@
 let g:NERDTreeWinPos = 'left'
 set nu
 set relativenumber
-" colors
+set shiftwidth=4 smarttab expandtab
+set tabstop=8 softtabstop=0
 
 " vim-plug and setups
 call plug#begin('~/.vim_runtime/plugged')
@@ -10,6 +11,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 call plug#end()
 
 " load plugins <Plug>PeepOpen
@@ -17,6 +19,10 @@ autocmd! User neovim/nvim-lspconfig echom 'lspconfig loaded'
 autocmd! User nvim-treesitter/nvim-treesitter echom 'treesitter loaded'
 autocmd! User neoclide/coc.nvim echom 'nvim loaded'
 autocmd! User fatih/vim-go echom 'vim-go loaded'
+autocmd! User folke/tokyonight.nvim echom 'tokyonight loaded'
+
+" colors
+colo tokyonight
 
 " plugin related setup
 " coc config
@@ -46,9 +52,25 @@ nnoremap <SPACE>? <Nop>
 nnoremap <C-space> <Nop>
 nnoremap <Leader>e <Nop>
 nnoremap <Leader>f <Nop>
+nnoremap gd <Nop>
 
 map <Leader>e :NERDTreeToggle <cr>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+
+" python related
 autocmd filetype python nmap <Leader>f :call CocAction('format') <cr>
+autocmd filetype python nmap <silent> gd <Plug>(coc-definition) <cr>
+autocmd filetype python nmap <leader>rn <Plug>(coc-rename) <cr>
+
 
 " vim-go related
 filetype plugin indent on
