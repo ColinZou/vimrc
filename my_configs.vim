@@ -1,8 +1,3 @@
-" global options
-nnoremap <SPACE> <Nop>
-nnoremap <SPACE>? <Nop>
-nnoremap <C-space> <Nop>
-
 " variables
 let g:NERDTreeWinPos = 'left'
 set nu
@@ -45,8 +40,14 @@ inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 " shortchuts
-map <Leader>f :NERDTreeToggle <cr>
-nmap <Leader>a :call CocAction('format') <cr>
+nnoremap <SPACE> <Nop>
+nnoremap <SPACE>? <Nop>
+nnoremap <C-space> <Nop>
+nnoremap <Leader>e <Nop>
+nnoremap <Leader>f <Nop>
+
+map <Leader>e :NERDTreeToggle <cr>
+autocmd filetype python nmap <Leader>f :call CocAction('format') <cr>
 
 " vim-go related
 filetype plugin indent on
@@ -64,4 +65,5 @@ let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 autocmd filetype go setlocal omnifunc=go#complete#Complete
 autocmd filetype go nnoremap gd :GoDef <cr>
+autocmd filetype go nnoremap <Leader>f :GoFmt <cr>
 
