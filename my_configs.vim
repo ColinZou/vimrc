@@ -1,6 +1,7 @@
 " variables
 let g:NERDTreeWinPos = 'left'
 set nu
+set relativenumber
 " colors
 
 " vim-plug and setups
@@ -67,3 +68,24 @@ autocmd filetype go setlocal omnifunc=go#complete#Complete
 autocmd filetype go nnoremap gd :GoDef <cr>
 autocmd filetype go nnoremap <Leader>f :GoFmt <cr>
 
+" gui setup
+" Set Editor Font
+if exists(':GuiFont')
+    " Use GuiFont! to ignore font errors
+    GuiFont! CaskaydiaCove Nerd Font:h12:1
+endif
+
+" Disable GUI Tabline
+if exists(':GuiTabline')
+    GuiTabline 0
+endif
+
+" Disable GUI Popupmenu
+if exists(':GuiPopupmenu')
+    GuiPopupmenu 0
+endif
+
+" Enable GUI ScrollBar
+if exists(':GuiScrollBar')
+    GuiScrollBar 1
+endif
