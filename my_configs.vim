@@ -66,7 +66,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " coc related
 autocmd filetype * nmap <Leader>f :call CocAction('format') <cr>
 autocmd filetype * nmap <silent> gd <Plug>(coc-definition) <cr>
-autocmd filetype * nmap <silent> gr <Plug>(coc-references) <cr>
+autocmd filetype * nmap <silent> gr <Plug>(coc-references-used) <cr>
 autocmd filetype * nmap <leader>gi :call CocAction('organizeImport') <cr>
 
 
