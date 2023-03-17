@@ -8,14 +8,12 @@ set tabstop=4 softtabstop=0
 
 " vim-plug and setups
 call plug#begin('~/.vim_runtime/plugged')
-Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 call plug#end()
 
 " load plugins <Plug>PeepOpen
-autocmd! User neovim/nvim-lspconfig echom 'lspconfig loaded'
 autocmd! User nvim-treesitter/nvim-treesitter echom 'treesitter loaded'
 autocmd! User neoclide/coc.nvim echom 'nvim loaded'
 autocmd! User folke/tokyonight.nvim echom 'tokyonight loaded'
@@ -69,7 +67,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 autocmd filetype * nmap <Leader>f :call CocAction('format') <cr>
 autocmd filetype * nmap <silent> gd <Plug>(coc-definition) <cr>
 autocmd filetype * nmap <silent> gr <Plug>(coc-references) <cr>
-autocmd filetype * nmap <leader>rn <Plug>(coc-rename) <cr>
+autocmd filetype * nmap <leader>gi :call CocAction('organizeImport') <cr>
 
 
 " gui setup
