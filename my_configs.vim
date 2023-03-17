@@ -4,13 +4,13 @@ set nu
 set relativenumber
 set shiftwidth=4 smarttab expandtab
 set tabstop=8 softtabstop=0
+ set autowrite
 
 " vim-plug and setups
 call plug#begin('~/.vim_runtime/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 call plug#end()
 
@@ -18,7 +18,6 @@ call plug#end()
 autocmd! User neovim/nvim-lspconfig echom 'lspconfig loaded'
 autocmd! User nvim-treesitter/nvim-treesitter echom 'treesitter loaded'
 autocmd! User neoclide/coc.nvim echom 'nvim loaded'
-autocmd! User fatih/vim-go echom 'vim-go loaded'
 autocmd! User folke/tokyonight.nvim echom 'tokyonight loaded'
 
 " colors
@@ -63,32 +62,14 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+" coc related
+autocmd filetype * nmap <Leader>f :call CocAction('format') <cr>
+autocmd filetype * nmap <silent> gd <Plug>(coc-definition) <cr>
+autocmd filetype * nmap <leader>rn <Plug>(coc-rename) <cr>
 
-" python related
-autocmd filetype python nmap <Leader>f :call CocAction('format') <cr>
-autocmd filetype python nmap <silent> gd <Plug>(coc-definition) <cr>
-autocmd filetype python nmap <leader>rn <Plug>(coc-rename) <cr>
-
-
-" vim-go related
-filetype plugin indent on
-set autowrite
-" Go syntax highlighting
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_operators = 1
-" Auto formatting and importing
-let g:go_fmt_autosave = 1
-let g:go_fmt_command = "goimports"
-" Status line types/signatures
-let g:go_auto_type_info = 1
-autocmd filetype go setlocal omnifunc=go#complete#Complete
-autocmd filetype go nnoremap gd :GoDef <cr>
-autocmd filetype go nnoremap <Leader>f :GoFmt <cr>
 
 " gui setup
 " Set Editor Font
