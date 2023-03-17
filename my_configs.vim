@@ -3,7 +3,7 @@ let g:NERDTreeWinPos = 'left'
 set nu
 set relativenumber
 set shiftwidth=4 smarttab expandtab
-set tabstop=8 softtabstop=0
+set tabstop=4 softtabstop=0
  set autowrite
 
 " vim-plug and setups
@@ -68,6 +68,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " coc related
 autocmd filetype * nmap <Leader>f :call CocAction('format') <cr>
 autocmd filetype * nmap <silent> gd <Plug>(coc-definition) <cr>
+autocmd filetype * nmap <silent> gr <Plug>(coc-references) <cr>
 autocmd filetype * nmap <leader>rn <Plug>(coc-rename) <cr>
 
 
