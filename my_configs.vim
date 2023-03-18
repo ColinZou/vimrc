@@ -5,6 +5,11 @@ set relativenumber
 set shiftwidth=4 smarttab expandtab
 set tabstop=4 softtabstop=0
 set autowrite
+set encoding=utf-8
+set nobackup
+set nowritebackup
+set updatetime=300
+set signcolumn=yes
 
 " coc-plugins
 let g:coc_global_extensions = ['coc-json', 'coc-yaml', 'coc-pyright', 'coc-go']
@@ -26,6 +31,11 @@ colo tokyonight
 
 " plugin related setup
 " coc config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -39,12 +49,26 @@ inoremap <silent><expr> <Tab>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-" use <c-space> for trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
+" Use <c-space> to trigger completion
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 " Use <C-@> on vim
 inoremap <silent><expr> <c-@> coc#refresh()
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+
 
 " shortchuts
 nnoremap <SPACE> <Nop>
@@ -67,11 +91,12 @@ endfunction
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " coc related
-autocmd filetype * nmap <Leader>f :call CocAction('format') <cr>
-autocmd filetype * nmap <silent> gd <Plug>(coc-definition) <cr>
-autocmd filetype * nmap <silent> gr <Plug>(coc-references-used) <cr>
-autocmd filetype * nmap <leader>gi :call CocAction('organizeImport') <cr>
-
+nmap <Leader>f :call CocAction('format') <cr>
+nmap <silent> gd <Plug>(coc-definition) <cr>
+nmap <silent> gr <Plug>(coc-references-used) <cr>
+nmap <leader>gi :call CocAction('organizeImport') <cr>
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
 
 " gui setup
 " Set Editor Font
