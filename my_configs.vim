@@ -4,7 +4,10 @@ set nu
 set relativenumber
 set shiftwidth=4 smarttab expandtab
 set tabstop=4 softtabstop=0
- set autowrite
+set autowrite
+
+" coc-plugins
+let g:coc_global_extensions = ['coc-json', 'coc-yaml', 'coc-pyright', 'coc-go']
 
 " vim-plug and setups
 call plug#begin('~/.vim_runtime/plugged')
