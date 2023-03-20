@@ -19,12 +19,15 @@ call plug#begin('~/.vim_runtime/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'folke/todo-comments.nvim'
 call plug#end()
 
 " load plugins <Plug>PeepOpen
 autocmd! User nvim-treesitter/nvim-treesitter echom 'treesitter loaded'
 autocmd! User neoclide/coc.nvim echom 'nvim loaded'
 autocmd! User folke/tokyonight.nvim echom 'tokyonight loaded'
+autocmd! User folke/todo-comments.nvim echom 'todo-comments loaded'
 
 " colors
 colo tokyonight
@@ -76,6 +79,7 @@ nnoremap <SPACE>? <Nop>
 nnoremap <C-space> <Nop>
 nnoremap <Leader>e <Nop>
 nnoremap <Leader>f <Nop>
+inoremap <SPACE>p <Nop>
 nnoremap gd <Nop>
 
 map <Leader>e :NERDTreeToggle <cr>
