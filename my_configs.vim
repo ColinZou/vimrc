@@ -1,4 +1,4 @@
-" variables
+" global variables
 let g:NERDTreeWinPos = 'left'
 set nu
 set relativenumber
@@ -10,6 +10,15 @@ set nobackup
 set nowritebackup
 set updatetime=300
 set signcolumn=yes
+" removing shortchuts
+nnoremap <SPACE> <Nop>
+nnoremap <SPACE>? <Nop>
+nnoremap <C-space> <Nop>
+nnoremap <Leader>e <Nop>
+nnoremap <Leader>f <Nop>
+inoremap <SPACE>p <Nop>
+inoremap <Leader>p <Nop>
+nnoremap gd <Nop>
 
 " coc-plugins
 let g:coc_global_extensions = ['coc-json', 'coc-yaml', 'coc-pyright', 'coc-go']
@@ -72,18 +81,8 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Show all diagnostics
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 
-
 " shortchuts
-nnoremap <SPACE> <Nop>
-nnoremap <SPACE>? <Nop>
-nnoremap <C-space> <Nop>
-nnoremap <Leader>e <Nop>
-nnoremap <Leader>f <Nop>
-inoremap <SPACE>p <Nop>
-nnoremap gd <Nop>
-
 map <Leader>e :NERDTreeToggle <cr>
-
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
