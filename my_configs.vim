@@ -122,3 +122,10 @@ endif
 if exists(':GuiScrollBar')
     GuiScrollBar 1
 endif
+
+" vue setup
+autocmd! filetype *.vue shiftwidth=2 smarttab expandtab tabstop=2 softtabstop=0
+autocmd! filetype *.html shiftwidth=2 smarttab expandtab tabstop=2 softtabstop=0
+autocmd! filetype *.js shiftwidth=2 smarttab expandtab tabstop=2 softtabstop=0
+autocmd! filetype *.ts shiftwidth=2 smarttab expandtab tabstop=2 softtabstop=0
+autocmd! filetype *.css shiftwidth=2 smarttab expandtab tabstop=2 softtabstop=0
