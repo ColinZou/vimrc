@@ -11,13 +11,11 @@ set nowritebackup
 set updatetime=300
 set signcolumn=yes
 " removing shortchuts
-nnoremap <SPACE> <Nop>
 nnoremap <SPACE>? <Nop>
 nnoremap <C-space> <Nop>
-nnoremap <Leader>e <Nop>
-nnoremap <Leader>f <Nop>
+nnoremap <SPACE>e <Nop>
+nnoremap <SPACE>f <Nop>
 inoremap <SPACE>p <Nop>
-inoremap <Leader>p <Nop>
 nnoremap gd <Nop>
 
 " coc-plugins
