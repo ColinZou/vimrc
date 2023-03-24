@@ -2,13 +2,28 @@
 -- Setup language servers.
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require('lspconfig')
-local servers = { 'jsonls', 'yamlls', 'pyright', 'gopls', 'volar' }
+local servers = { 'jsonls', 'yamlls', 'pyright', 'gopls', 'lua_ls' }
+local sysos = vim.loop.os_uname().sysname
 -- need to run: npm i -g yaml-language-server @volar/vue-language-server pyright vscode-langservers-extracted
+-- brew install lua-language-server
+-- need to run npm i -D typescript for vue project
+-- check 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
     capabilities = capabilities,
   }
+end
+
+require'lspconfig'.volar.setup{
+  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+}
+
+-- load mason
+require("mason").setup()
+if string.find(sysos, "Windows") then
+    -- load manson-lspconfig for windows
+    require("mason-lspconfig").setup()
 end
 
 -- Global mappings.
@@ -50,7 +65,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- nvim-cmp setup
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 local cmp = require 'cmp'
+local luasnip = require('luasnip')
+require("luasnip.loaders.from_vscode").lazy_load()
 cmp.setup {
   mapping = cmp.mapping.preset.insert({
     ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
@@ -63,6 +85,10 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
       else
         fallback()
       end
@@ -70,13 +96,53 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
     end, { 'i', 's' }),
   }),
   sources = {
-    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp'},
+    { name = 'luasnip'},
+    { name = 'buffer'},
+  },
+  snippet = {
+    expand = function(args)
+      require'luasnip'.lsp_expand(args.body)
+    end
+  },
+  window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
   },
 }
+
+-- golang setup 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.go" },
+  callback = function()
+	  vim.lsp.buf.formatting_sync(nil, 3000)
+  end,
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = { "*.go" },
+	callback = function()
+		local params = vim.lsp.util.make_range_params(nil, vim.lsp.util._get_offset_encoding())
+		params.context = {only = {"source.organizeImports"}}
+
+		local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
+		for _, res in pairs(result or {}) do
+			for _, r in pairs(res.result or {}) do
+				if r.edit then
+					vim.lsp.util.apply_workspace_edit(r.edit, vim.lsp.util._get_offset_encoding())
+				else
+					vim.lsp.buf.execute_command(r.command)
+				end
+			end
+		end
+	end,
+})
 
