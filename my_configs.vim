@@ -21,12 +21,12 @@ inoremap <Leader>p <Nop>
 nnoremap gd <Nop>
 
 " coc-plugins
-let g:coc_global_extensions = ['coc-json', 'coc-yaml', 'coc-pyright', 'coc-go']
+let g:coc_global_extensions = ['coc-json', 'coc-yaml', 'coc-pairs', 'coc-pyright', 'coc-go', '@yaegassy/coc-volar', '@yaegassy/coc-volar-tools']
 
 " vim-plug and setups
 call plug#begin('~/.vim_runtime/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82', 'do': 'yarn install --frozen-lockfile'}
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'folke/todo-comments.nvim'
