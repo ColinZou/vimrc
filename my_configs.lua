@@ -72,6 +72,11 @@ local has_words_before = function()
 end
 local cmp = require 'cmp'
 local luasnip = require('luasnip')
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+require('cmp_nvim_lsp').defalt_capabilities = capabilities
+vim.o.completeopt = 'menuone,noselect'
+
 require("luasnip.loaders.from_vscode").lazy_load()
 cmp.setup {
   mapping = cmp.mapping.preset.insert({
@@ -104,9 +109,8 @@ cmp.setup {
     end, { 'i', 's' }),
   }),
   sources = {
-    { name = 'nvim_lsp'},
-    { name = 'luasnip'},
-    { name = 'buffer'},
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
   },
   snippet = {
     expand = function(args)
@@ -127,8 +131,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.go" },
+vim.api.nvim_create_autocmd("BufWritePre", { pattern = { "*.go" },
 	callback = function()
 		local params = vim.lsp.util.make_range_params(nil, vim.lsp.util._get_offset_encoding())
 		params.context = {only = {"source.organizeImports"}}
