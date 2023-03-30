@@ -1,9 +1,11 @@
 -- LSP config
 -- Setup language servers.
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require('lspconfig')
-local servers = { 'jsonls', 'yamlls', 'pyright', 'gopls', 'lua_ls' }
+local servers = { 'yamlls', 'pyright', 'gopls', 'lua_ls' }
 local sysos = vim.loop.os_uname().sysname
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- need to run: npm i -g yaml-language-server @volar/vue-language-server pyright vscode-langservers-extracted
 -- brew install lua-language-server
 -- need to run npm i -D typescript for vue project
@@ -17,6 +19,15 @@ end
 
 require'lspconfig'.volar.setup{
   filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+}
+
+require'lspconfig'.jsonls.setup{
+    settings = {
+        json = {
+             schemas = require('schemastore').json.schemas(),
+             validate = { enable = true },
+        }
+    }
 }
 
 -- load mason

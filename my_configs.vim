@@ -15,6 +15,7 @@ nnoremap <SPACE> <Nop>
 nnoremap <SPACE>? <Nop>
 nnoremap <C-space> <Nop>
 nnoremap <SPACE>e <Nop>
+nnoremap <Leader>e <Nop>
 nnoremap <SPACE>f <Nop>
 inoremap <SPACE>p <Nop>
 nnoremap gd <Nop>
@@ -37,6 +38,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v1.2.1', 'do': 'make install_jsregexp'}
 Plug 'rafamadriz/friendly-snippets'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'b0o/schemastore.nvim'
 
 call plug#end()
 
