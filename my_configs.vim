@@ -9,7 +9,12 @@ set encoding=utf-8
 set nobackup
 set nowritebackup
 set updatetime=300
+" fix scroll slow problem
 set signcolumn=yes
+set cursorline!
+set lazyredraw
+set synmaxcol=128
+syntax sync minlines=256
 " removing shortchuts
 nnoremap <SPACE> <Nop>
 nnoremap <SPACE>? <Nop>
