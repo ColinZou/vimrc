@@ -42,6 +42,7 @@ Plug 'b0o/schemastore.nvim'
 
 "  bookmark plugin
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'equalsraf/neovim-gui-shim'
 
 call plug#end()
 
@@ -66,7 +67,7 @@ map <Leader>d :bwipeout <cr>
 " Set Editor Font
 if exists(':GuiFont')
     " Use GuiFont! to ignore font errors
-    GuiFont! CaskaydiaCove Nerd Font:h12:1
+    GuiFont! CaskaydiaCove Nerd Font:h11
 endif
 
 " Disable GUI Tabline
