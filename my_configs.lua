@@ -3,7 +3,7 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require('lspconfig')
-local servers = { 'yamlls', 'pyright', 'gopls', 'lua_ls' }
+local servers = { 'yamlls', 'pyright', 'gopls', 'lua_ls', 'clangd'}
 local sysos = vim.loop.os_uname().sysname
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- need to run: npm i -g yaml-language-server @volar/vue-language-server pyright vscode-langservers-extracted
