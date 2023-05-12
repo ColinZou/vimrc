@@ -40,6 +40,9 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'b0o/schemastore.nvim'
 
+"  bookmark plugin
+Plug 'MattesGroeger/vim-bookmarks'
+
 call plug#end()
 
 
@@ -89,3 +92,13 @@ autocmd! filetype *.ts shiftwidth=2 smarttab expandtab tabstop=2 softtabstop=0
 autocmd! filetype *.css shiftwidth=2 smarttab expandtab tabstop=2 softtabstop=0
 
 autocmd! bufwritepost ~/.vim_runtime/my_configs.lua source ~/.vim_runtime/my_configs.vim
+
+"bookmark plugin
+highlight BookmarkSign ctermbg=NONE ctermfg=160
+highlight BookmarkLine ctermbg=194 ctermfg=NONE
+let g:bookmark_sign = '♥'
+let g:bookmark_highlight_lines = 1
+nmap <C-k><C-k> <Plug>BookmarkToggle
+nmap <C-k><C-a> <Plug>BookmarkShowAll
+nmap <C-k><C-n> <Plug>BookmarkNext
+nmap <C-k><C-p> <Plug>BookmarkPrev
