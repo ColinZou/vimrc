@@ -76,7 +76,7 @@ if exists(':GuiFont')
 endif
 
 if exists(':GuiRenderLigatures')
-    GuiRenderLigatures 1
+    GuiRenderLigatures 0
 endif
 
 " Disable GUI Tabline
