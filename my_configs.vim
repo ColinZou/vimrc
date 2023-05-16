@@ -72,7 +72,7 @@ map <Leader>d :bwipeout <cr>
 " Set Editor Font
 if exists(':GuiFont')
     " Use GuiFont! to ignore font errors
-    GuiFont! CaskaydiaCove Nerd Font:h11
+    GuiFont! CaskaydiaCove Nerd Font:h10
 endif
 
 if exists(':GuiRenderLigatures')
