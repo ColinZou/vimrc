@@ -49,6 +49,9 @@ Plug 'b0o/schemastore.nvim'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'equalsraf/neovim-gui-shim'
 
+" clangd
+Plug 'p00f/clangd_extensions.nvim'
+
 call plug#end()
 
 
