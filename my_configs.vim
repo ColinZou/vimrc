@@ -40,6 +40,8 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+Plug 'hrsh7th/cmp-vsnip'
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v1.2.1', 'do': 'make install_jsregexp'}
 Plug 'rafamadriz/friendly-snippets'
 Plug 'saadparwaiz1/cmp_luasnip'
@@ -51,6 +53,9 @@ Plug 'equalsraf/neovim-gui-shim'
 
 " clangd
 Plug 'p00f/clangd_extensions.nvim'
+
+" rust
+Plug 'simrat39/rust-tools.nvim'
 
 call plug#end()
 
@@ -115,3 +120,5 @@ nmap <C-k><C-k> <Plug>BookmarkToggle
 nmap <C-k><C-a> <Plug>BookmarkShowAll
 nmap <C-k><C-n> <Plug>BookmarkNext
 nmap <C-k><C-p> <Plug>BookmarkPrev
+
+
