@@ -327,3 +327,17 @@ lspconfig.lua_ls.setup {
     },
   },
 }
+-- clipboard support
+if vim.g.neovide then
+  vim.keymap.set('n', '<c-s>', ':w<CR>') -- Save
+  vim.keymap.set('n', '<c-v>', '"+P') -- Paste normal mode
+  vim.keymap.set('v', '<c-v>', '"+P') -- Paste visual mode
+  vim.keymap.set('c', '<c-v>', '<C-R>+') -- Paste command mode
+  vim.keymap.set('i', '<c-v>', '<ESC>l"+Pli') -- Paste insert mode
+  -- Allow clipboard copy paste in neovim
+  vim.api.nvim_set_keymap('', '<c-v>', '+p<CR>', { noremap = true, silent = true})
+  vim.api.nvim_set_keymap('!', '<c-v>', '<C-R>+', { noremap = true, silent = true})
+  vim.api.nvim_set_keymap('t', '<c-v>', '<C-R>+', { noremap = true, silent = true})
+  vim.api.nvim_set_keymap('v', '<c-v>', '<C-R>+', { noremap = true, silent = true})
+end
+
