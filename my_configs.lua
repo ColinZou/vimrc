@@ -3,7 +3,7 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require('lspconfig')
-local servers = { 'yamlls', 'pyright', 'gopls' }
+local servers = { 'yamlls', 'pyright', 'gopls', 'cmake' }
 local sysos = vim.loop.os_uname().sysname
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- need to run: npm i -g yaml-language-server @volar/vue-language-server pyright vscode-langservers-extracted
@@ -11,10 +11,13 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- need to run npm i -D typescript for vue project
 -- check
 for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-        -- on_attach = my_custom_on_attach,
-        capabilities = capabilities,
-    }
+    local lsp_item = lspconfig[lsp]
+    if lsp_item then
+        lsp_item.setup {
+            -- on_attach = my_custom_on_attach,
+            capabilities = capabilities,
+        }
+    end
 end
 
 
