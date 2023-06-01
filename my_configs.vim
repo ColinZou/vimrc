@@ -57,6 +57,9 @@ Plug 'p00f/clangd_extensions.nvim'
 " rust
 Plug 'simrat39/rust-tools.nvim'
 
+" cmake
+Plug 'cdelledonne/vim-cmake'
+
 call plug#end()
 
 
