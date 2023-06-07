@@ -124,4 +124,6 @@ nmap <C-k><C-a> <Plug>BookmarkShowAll
 nmap <C-k><C-n> <Plug>BookmarkNext
 nmap <C-k><C-p> <Plug>BookmarkPrev
 
+" clipboard: windows need to add win32yank in path, and macos need pbcopy/pbpaste
+set clipboard+=unnamedplus
 
