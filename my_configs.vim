@@ -60,6 +60,9 @@ Plug 'simrat39/rust-tools.nvim'
 " cmake
 Plug 'cdelledonne/vim-cmake'
 
+" copilot
+Plug 'github/copilot.vim'
+
 call plug#end()
 
 
@@ -126,4 +129,7 @@ nmap <C-k><C-p> <Plug>BookmarkPrev
 
 " clipboard: windows need to add win32yank in path, and macos need pbcopy/pbpaste
 set clipboard+=unnamedplus
+" copilot setup
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
