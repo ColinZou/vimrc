@@ -133,3 +133,7 @@ set clipboard+=unnamedplus
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
 let g:copilot_proxy = $COPILOT_PROXY
+
+imap <silent> <C-.> <Plug>(copilot-next)
+imap <silent> <C-,> <Plug>(copilot-previous)
+imap <silent> <C-/> <Plug>(copilot-dismiss)
