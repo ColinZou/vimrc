@@ -16,5 +16,7 @@ try
   source ~/.vim_runtime/my_configs.vim
 catch
 endtry' > ~/.vimrc
-
+if [[ "$OSTYPE" == "linux-gnu"* ] || [ "$OSTYPE" == "darwin"*  ]]; then
+    ln -s ~/.vim_runtime ~/.config/nvim && ln -s ~/.vimrc ~/.config/nvim/init.vim
+fi
 echo "Installed the Ultimate Vim configuration successfully! Enjoy :-)"
