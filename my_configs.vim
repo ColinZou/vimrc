@@ -63,6 +63,9 @@ Plug 'cdelledonne/vim-cmake'
 " copilot
 Plug 'github/copilot.vim'
 
+" jinja2 syntax
+Plug 'glench/vim-jinja2-syntax'
+
 call plug#end()
 
 
