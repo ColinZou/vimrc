@@ -70,8 +70,10 @@ Plug 'glench/vim-jinja2-syntax'
 Plug 'rhysd/vim-clang-format'
 
 " csharp
-Plug 'Decodetalkers/csharpls-extended-lsp.nvim'
-Plug 'OrangeT/vim-csharp'
+
+" html/react stuff
+Plug 'windwp/nvim-ts-autotag'
+Plug 'windwp/nvim-autopairs'
 
 call plug#end()
 
