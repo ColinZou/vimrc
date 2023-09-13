@@ -66,6 +66,9 @@ Plug 'github/copilot.vim'
 " jinja2 syntax
 Plug 'glench/vim-jinja2-syntax'
 
+" format
+Plug 'sbdchd/neoformat'
+
 call plug#end()
 
 
@@ -140,3 +143,7 @@ let g:copilot_proxy = $COPILOT_PROXY
 imap <silent> <C-.> <Plug>(copilot-next)
 imap <silent> <C-,> <Plug>(copilot-previous)
 imap <silent> <C-/> <Plug>(copilot-dismiss)
+
+let g:neoformat_try_node_exe = 1
+autocmd BufWritePre,TextChanged,InsertLeave *.c *.cpp *.hpp *.h *.py *.js Neoformat
+
