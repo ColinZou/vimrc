@@ -140,7 +140,7 @@ cmp.setup {
 
 -- golang setup
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.go" },
+    pattern = { "*.go", "*.c", "*.cpp", "*.h", "*.hpp" },
     callback = function()
         vim.lsp.buf.format{ async = true }
     end,
@@ -160,12 +160,13 @@ function format_go(timeout)
         end
     end
 end
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.go" },
-    callback = function()
-        format_go(1000)
-    end,
-})
+
+--vim.api.nvim_create_autocmd("BufWritePre", {
+--    pattern = { "*.go" },
+--    callback = function()
+--        format_go(1000)
+--    end,
+--})
 
 -- clangd
 require("clangd_extensions").setup {
