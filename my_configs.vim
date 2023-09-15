@@ -70,7 +70,8 @@ Plug 'glench/vim-jinja2-syntax'
 Plug 'rhysd/vim-clang-format'
 
 " csharp
-Plug 'OmniSharp/omnisharp-vim'
+Plug 'Decodetalkers/csharpls-extended-lsp.nvim'
+Plug 'OrangeT/vim-csharp'
 
 call plug#end()
 

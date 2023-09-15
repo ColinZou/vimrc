@@ -20,6 +20,14 @@ for _, lsp in ipairs(servers) do
     end
 end
 
+local pid = vim.fn.getpid()
+local csharp_ls_config = {
+  handlers = {
+    ["textDocument/definition"] = require('csharpls_extended').handler,
+  },
+  cmd = { 'csharp-ls' },
+}
+lspconfig.csharp_ls.setup(csharp_ls_config)
 
 require 'lspconfig'.volar.setup {
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
