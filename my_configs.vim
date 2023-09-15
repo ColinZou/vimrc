@@ -69,6 +69,9 @@ Plug 'glench/vim-jinja2-syntax'
 " format
 Plug 'rhysd/vim-clang-format'
 
+" csharp
+Plug 'OmniSharp/omnisharp-vim'
+
 call plug#end()
 
 
