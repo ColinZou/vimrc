@@ -70,6 +70,8 @@ Plug 'glench/vim-jinja2-syntax'
 Plug 'rhysd/vim-clang-format'
 
 " csharp
+Plug 'dense-analysis/ale'
+Plug 'Hoffs/omnisharp-extended-lsp.nvim'
 
 " html/react stuff
 Plug 'windwp/nvim-ts-autotag'
@@ -163,4 +165,5 @@ autocmd FileType c,cpp,objc vnoremap <buffer><Leader>fm :ClangFormat<CR>
 autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 " Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
+
 

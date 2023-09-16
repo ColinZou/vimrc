@@ -1,5 +1,6 @@
 -- LSP config
 -- Setup language servers.
+local proc_pid = vim.fn.getpid()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require('lspconfig')
@@ -30,6 +31,17 @@ require 'lspconfig'.jsonls.setup {
             schemas = require('schemastore').json.schemas(),
             validate = { enable = true },
         }
+    }
+}
+
+require 'lspconfig'.omnisharp.setup {
+    handlers = {
+        ["textDocument/definition"] = require('omnisharp_extended').handler,
+    },
+    cmd = {
+        '/Users/colin/Bin/omnisharp/OmniSharp',
+        '--languageserver',
+        tostring(proc_pid),
     }
 }
 
