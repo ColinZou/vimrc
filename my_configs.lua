@@ -39,7 +39,7 @@ require 'lspconfig'.omnisharp.setup {
         ["textDocument/definition"] = require('omnisharp_extended').handler,
     },
     cmd = {
-        '/Users/colin/Bin/omnisharp/OmniSharp',
+        'OmniSharp',
         '--languageserver',
         tostring(proc_pid),
     }
