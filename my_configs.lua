@@ -151,7 +151,7 @@ cmp.setup {
 
 -- golang setup
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.go", "*.c", "*.cpp", "*.h", "*.hpp" },
+    pattern = { "*.go", "*.c", "*.cpp", "*.h", "*.hpp", "*.cs" },
     callback = function()
         vim.lsp.buf.format{ async = true }
     end,
