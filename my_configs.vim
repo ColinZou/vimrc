@@ -77,6 +77,8 @@ Plug 'Hoffs/omnisharp-extended-lsp.nvim'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'windwp/nvim-autopairs'
 
+" bitbake
+Plug 'kergoth/vim-bitbake'
 call plug#end()
 
 
@@ -166,4 +168,5 @@ autocmd FileType c,cpp,objc,h,hpp map <buffer><Leader>x <Plug>(operator-clang-fo
 " Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
 
+autocmd BufNewFile,BufRead *.c,*.cpp,*,h,*.hpp setlocal foldmethod=syntax
 
