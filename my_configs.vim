@@ -22,8 +22,8 @@ nnoremap <C-space> <Nop>
 nnoremap <SPACE>e <Nop>
 nnoremap <Leader>e <Nop>
 nnoremap <SPACE>f <Nop>
-inoremap <SPACE>p <Nop>
 nnoremap gd <Nop>
+
 
 " vim-plug and setups
 call plug#begin('~/.vim_runtime/plugged')
