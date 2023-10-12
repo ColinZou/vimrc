@@ -84,7 +84,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', '<space>f', function()
+        vim.keymap.set('n', 'fm', function()
             vim.lsp.buf.format { async = true }
         end, opts)
     end,
@@ -149,35 +149,13 @@ cmp.setup {
     },
 }
 
--- golang setup
+-- autoformat setup
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.go", "*.c", "*.cpp", "*.h", "*.hpp", "*.cs" },
+    pattern = { "*.go", "*.c", "*.cpp", "*.h", "*.hpp", "*.cs", "*.rs", },
     callback = function()
         vim.lsp.buf.format{ async = true }
     end,
 })
-function format_go(timeout) 
-    local params = vim.lsp.util.make_range_params(nil, vim.lsp.util._get_offset_encoding())
-    params.context = { only = { "source.organizeImports" } }
-
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout)
-    for _, res in pairs(result or {}) do
-        for _, r in pairs(res.result or {}) do
-            if r.edit then
-                vim.lsp.util.apply_workspace_edit(r.edit, vim.lsp.util._get_offset_encoding())
-            else
-                vim.lsp.buf.execute_command(r.command)
-            end
-        end
-    end
-end
-
---vim.api.nvim_create_autocmd("BufWritePre", {
---    pattern = { "*.go" },
---    callback = function()
---        format_go(1000)
---    end,
---})
 
 -- clangd
 require("clangd_extensions").setup {
