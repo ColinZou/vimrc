@@ -372,4 +372,6 @@ autopairs.setup({
   disable_filetype = { "TelescopePrompt" , "vim" },
 })
 
-
+if vim.g.neovide then
+    vim.o.guifont = "ComicShannsMono Nerd Font:h16"
+end
