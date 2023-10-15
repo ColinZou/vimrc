@@ -373,5 +373,16 @@ autopairs.setup({
 })
 
 if vim.g.neovide then
+    local neovide_toggle_fullscreen = function()
+        local current_status = vim.g.neovide_fullscreen
+        local target_status = current_status
+        if current_status then
+            target_status = false
+        else
+           target_status = true
+        end
+        vim.g.neovide_fullscreen = target_status
+    end
     vim.o.guifont = "ComicShannsMono Nerd Font:h16"
+    vim.keymap.set('n', '<C-F11>', neovide_toggle_fullscreen)
 end
