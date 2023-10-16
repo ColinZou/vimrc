@@ -79,6 +79,10 @@ Plug 'windwp/nvim-autopairs'
 
 " bitbake
 Plug 'kergoth/vim-bitbake'
+
+" telescope
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
+
 call plug#end()
 
 
