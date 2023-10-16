@@ -383,6 +383,7 @@ if vim.g.neovide then
         end
         vim.g.neovide_fullscreen = target_status
     end
-    vim.o.guifont = "ComicShannsMono Nerd Font:h16"
+    local gvim_font_size = os.getenv("GVIM_FONT_SIZE") or "h11"
+    vim.o.guifont = "ComicShannsMono Nerd Font:" .. gvim_font_size
     vim.keymap.set('n', '<C-F11>', neovide_toggle_fullscreen)
 end
