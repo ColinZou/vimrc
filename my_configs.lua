@@ -371,6 +371,16 @@ if (not status) then return end
 autopairs.setup({
   disable_filetype = { "TelescopePrompt" , "vim" },
 })
+local get_os = function()
+    local os_name = vim.loop.os_uname().sysname
+    if os_name == "Linux" then
+        return "Linux"
+    elseif os_name == "Darwin" then
+        return "Mac"
+    elseif os_name == "Windows" then
+        return "Windows"
+    end
+end
 
 if vim.g.neovide then
     local neovide_toggle_fullscreen = function()
@@ -384,6 +394,9 @@ if vim.g.neovide then
         vim.g.neovide_fullscreen = target_status
     end
     local gvim_font_size = os.getenv("GVIM_FONT_SIZE") or "h11"
+    if get_os() == "Mac" then
+        gvim_font_size = os.getenv("GVIM_FONT_SIZE") or "h16"
+    end
     vim.o.guifont = "ComicShannsMono Nerd Font:" .. gvim_font_size
     vim.keymap.set('n', '<C-F11>', neovide_toggle_fullscreen)
 end
