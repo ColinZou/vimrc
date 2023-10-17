@@ -407,5 +407,5 @@ vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, {})
-vim.keymap.set('n', '<leader>ol', telescope_builtin.lsp_document_symbols, {})
-
+vim.keymap.set('n', '<leader>sl', telescope_builtin.lsp_document_symbols, {})
+vim.keymap.set('n', '<leader>si', telescope_builtin.lsp_implementations, {})
