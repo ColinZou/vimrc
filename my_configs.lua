@@ -409,3 +409,9 @@ vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, {})
 vim.keymap.set('n', '<leader>sl', telescope_builtin.lsp_document_symbols, {})
 vim.keymap.set('n', '<leader>si', telescope_builtin.lsp_implementations, {})
+
+-- setup spell checker
+vim.opt.spell = true
+vim.opt.spelllang = 'en_us'
+vim.opt.spellfile = (os.getenv("HOME") or "~") .. '/.vim_runtime/spell/en.utf-8.add'
+
