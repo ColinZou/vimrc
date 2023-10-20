@@ -22,3 +22,12 @@ btnup
 json
 CFG
 env
+lua
+bitbake
+csharp
+cmake
+clangd
+jinja2
+gui
+vue
+macos

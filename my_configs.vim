@@ -15,7 +15,7 @@ set cursorline!
 set lazyredraw
 set synmaxcol=128
 syntax sync minlines=256
-" removing shortchuts
+" removing shortcuts
 nnoremap <SPACE> <Nop>
 nnoremap <SPACE>? <Nop>
 nnoremap <C-space> <Nop>
@@ -98,7 +98,7 @@ autocmd! User folke/todo-comments.nvim echom 'todo-comments loaded'
 " colors
 colo tokyonight
 
-" shortchuts
+" shortcuts
 map <Leader>e :NERDTreeToggle <cr>
 map <Leader>d :bwipeout <cr>
 
@@ -113,17 +113,17 @@ if exists(':GuiRenderLigatures')
     GuiRenderLigatures 0
 endif
 
-" Disable GUI Tabline
+" Disable GUI Tab line
 if exists(':GuiTabline')
     GuiTabline 0
 endif
 
-" Disable GUI Popupmenu
+" Disable GUI Pop up menu
 if exists(':GuiPopupmenu')
     GuiPopupmenu 0
 endif
 
-" Enable GUI ScrollBar
+" Enable GUI scroll bar
 if exists(':GuiScrollBar')
     GuiScrollBar 1
 endif
