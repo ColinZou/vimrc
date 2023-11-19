@@ -35,6 +35,10 @@ require 'lspconfig'.jsonls.setup {
 }
 
 require 'lspconfig'.omnisharp.setup {
+    enable_editorconfig_support = true,
+    enable_roslyn_analyzers     = true,
+    enable_import_completion    = true,
+    sdk_include_prereleases     = false,
     handlers = {
         ["textDocument/definition"] = require('omnisharp_extended').handler,
     },
