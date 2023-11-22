@@ -34,11 +34,19 @@ require 'lspconfig'.jsonls.setup {
     }
 }
 
+local omnishparp_on_attach = function(client, bufnr) 
+      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+end
+
+
 require 'lspconfig'.omnisharp.setup {
     enable_editorconfig_support = true,
     enable_roslyn_analyzers     = true,
     enable_import_completion    = true,
+    organize_imports_on_format = true,
     sdk_include_prereleases     = false,
+    on_attach = omnishparp_on_attach, 
+    capabilities = capabilities,
     handlers = {
         ["textDocument/definition"] = require('omnisharp_extended').handler,
     },
